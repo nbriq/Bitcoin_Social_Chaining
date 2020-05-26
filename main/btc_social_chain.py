@@ -201,22 +201,22 @@ def create_direct_contact_struct(account):
                         direct_contacts[outputs['addr']]['out_txs'] = []
                         direct_contacts[outputs['addr']]['total_in'] = outputs['value']
                         direct_contacts[outputs['addr']]['total_out'] = 0
-                        direct_contacts[input][color] = "%03x" % random.randint(0, 0xFFF)
+                        direct_contacts[outputs['addr']]['color'] = "%03x" % random.randint(0, 0xFFF)
 
                 # Special Case when sending address is not known
                 # For now, just create a special output value for this!
                 else:
                     if "no_rec_addr" in outputs:
-                        direct_contacts["no_rec_addr"][txs].append(tx['hash'])
-                        direct_contacts["no_rec_addr"][in_txs].append(tx['hash'])
-                        direct_contacts["no_rec_addr"][total_in] += outputs['value']
+                        direct_contacts["no_rec_addr"]['txs'].append(tx['hash'])
+                        direct_contacts["no_rec_addr"]['in_txs'].append(tx['hash'])
+                        direct_contacts["no_rec_addr"]['total_in'] += outputs['value']
                     else:
-                        direct_contacts["no_rec_addr"][txs] = [tx['hash']]
-                        direct_contacts["no_rec_addr"][in_txs] = [tx['hash']]
-                        direct_contacts["no_rec_addr"][out_txs] = []
-                        direct_contacts["no_rec_addr"][total_in] = outputs['value']
-                        direct_contacts["no_rec_addr"][total_out] = 0
-                        direct_contacts["no_rec_addr"][color] = "%03x" % random.randint(0, 0xFFF)
+                        direct_contacts["no_rec_addr"]['txs'] = [tx['hash']]
+                        direct_contacts["no_rec_addr"]['in_txs'] = [tx['hash']]
+                        direct_contacts["no_rec_addr"]['out_txs'] = []
+                        direct_contacts["no_rec_addr"]['total_in'] = outputs['value']
+                        direct_contacts["no_rec_addr"]['total_out'] = 0
+                        direct_contacts["no_rec_addr"]['color'] = "%03x" % random.randint(0, 0xFFF)
     return direct_contacts
 
 def print_direct_contact_list(direct_contacts):
